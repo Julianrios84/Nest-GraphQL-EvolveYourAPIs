@@ -1,0 +1,10 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  """Return message"""
+  hello: String!
+  randomNumber: Float!
+  randomFromZeroTo(to: Int): Int!
+}
