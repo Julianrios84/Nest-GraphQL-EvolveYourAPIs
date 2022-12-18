@@ -9,14 +9,14 @@ import {
   Int,
   Parent,
 } from '@nestjs/graphql';
-import { UsersService } from './users.service';
 import { User } from './entities/user.entity';
-import { UpdateUserInput } from './dto/update-user.input';
-import { ValidRolesArgs } from './dto/args/roles.arg';
+import { UsersService } from './users.service';
 import { JWtAuthGuard } from '../auth/guards/jwt.auth.guard';
 import { CurrentUser } from '../auth/decorators/user.decorator';
 import { ValidRoles } from '../auth/enums/valid.roles.enum';
 import { ItemsService } from '../items/items.service';
+import { UpdateUserInput } from './dto/update-user.input';
+import { ValidRolesArgs } from './dto/args/roles.arg';
 
 @Resolver(() => User)
 @UseGuards(JWtAuthGuard)
