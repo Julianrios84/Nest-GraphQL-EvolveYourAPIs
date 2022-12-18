@@ -7,7 +7,7 @@ import { JwtService } from '@nestjs/jwt';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
+import { ApolloDriver } from '@nestjs/apollo';
 
 import { ItemsModule } from './items/items.module';
 import { UsersModule } from './users/users.module';
