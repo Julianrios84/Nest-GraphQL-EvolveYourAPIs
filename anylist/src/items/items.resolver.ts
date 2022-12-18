@@ -6,7 +6,7 @@ import { CreateItemInput, UpdateItemInput } from './dto';
 
 @Resolver(() => Item)
 export class ItemsResolver {
-  constructor(private readonly itemsService: ItemsService) {}
+    constructor(private readonly itemsService: ItemsService) {}
 
   @Mutation(() => Item)
   async createItem(@Args('createItemInput') createItemInput: CreateItemInput): Promise<Item> {
