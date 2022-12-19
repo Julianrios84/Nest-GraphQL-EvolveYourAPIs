@@ -13,6 +13,7 @@ import { ItemsModule } from './items/items.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { SeedModule } from './seed/seed.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [
@@ -34,11 +35,12 @@ import { SeedModule } from './seed/seed.module';
         plugins: [ApolloServerPluginLandingPageLocalDefault],
         context({ req }) {
           
-          const token = req.headers.authorization?.replace('Bearer ', '');
-          if (!token) throw Error(`Token needed`);
+          // const token = req.headers.authorization?.replace('Bearer ', '');
+          // if (!token) throw Error(`Token needed`);
 
-          const payload = jwtService.decode(token);
-          if (!payload) throw Error(`Token not valid`);
+          // const payload = jwtService.decode(token);
+          // if (!payload) throw Error(`Token not valid`);
+
         },
       }),
     }),
@@ -64,6 +66,7 @@ import { SeedModule } from './seed/seed.module';
     UsersModule,
     AuthModule,
     SeedModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],
