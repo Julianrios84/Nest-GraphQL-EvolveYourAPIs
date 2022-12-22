@@ -57,7 +57,9 @@ export class ItemsService {
     updateItemInput: UpdateItemInput,
     user: User,
   ): Promise<Item> {
-    const item = await this.itemsRepository.preload(updateItemInput);
+    await this.findOne( id, user );
+     //? const item = await this.itemsRepository.preload({ ...updateItemInput, user });
+    const item = await this.itemsRepository.preload( updateItemInput );
     if (!item) throw new NotFoundException(`Item with id ${id} not found`);
     return this.itemsRepository.save(item);
   }
