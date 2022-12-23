@@ -16,12 +16,12 @@ export class List {
   name: string;
 
   @ManyToOne(() => User, (user) => user.lists, { nullable: false, lazy: true })
-  @Index('user-list-index')
+  @Index('userId-list-index')
   @Field(() => User)
   user: User;
 
   @OneToMany(() => ListItem, (listItem) => listItem.list, { lazy: true })
-  @Field(() => [ListItem])
+  // @Field(() => [ListItem])
   listItem: ListItem[];
 
 

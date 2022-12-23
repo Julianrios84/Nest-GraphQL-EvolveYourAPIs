@@ -36,13 +36,10 @@ import { ListItemModule } from './list-item/list-item.module';
         autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
         plugins: [ApolloServerPluginLandingPageLocalDefault],
         context({ req }) {
-          
           // const token = req.headers.authorization?.replace('Bearer ', '');
           // if (!token) throw Error(`Token needed`);
-
           // const payload = jwtService.decode(token);
           // if (!payload) throw Error(`Token not valid`);
-
         },
       }),
     }),
@@ -56,6 +53,12 @@ import { ListItemModule } from './list-item/list-item.module';
     // }),
     TypeOrmModule.forRoot({
       type: 'postgres',
+      ssl: ( process.env.STATE === 'prod' ) 
+        ? {
+          rejectUnauthorized: false,
+          sslmode: 'require',
+        } 
+        : false as any,
       host: process.env.DB_HOST,
       port: +process.env.DB_PORT,
       username: process.env.DB_USERNAME,
@@ -75,4 +78,14 @@ import { ListItemModule } from './list-item/list-item.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('Variables de entorno');
+    console.log("STATE",  process.env.STATE );
+    console.log("host",  process.env.DB_HOST );
+    console.log("port",  +process.env.DB_PORT );
+    console.log("username",  process.env.DB_USERNAME );
+    console.log("password",  process.env.DB_PASSWORD );
+    console.log("database",  process.env.DB_NAME );
+  }
+}

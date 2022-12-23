@@ -1,9 +1,10 @@
 import { ObjectType, Field,  ID } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { List } from '../../lists/entities/list.entity';
 import { Item } from '../../items/entities/item.entity';
 
 @Entity({ name: 'listItems'})
+@Unique('listItem-item', ['list','item'])
 @ObjectType()
 export class ListItem {
   
@@ -20,7 +21,7 @@ export class ListItem {
   completed: boolean;
 
   @ManyToOne(() => List, (list) => list.listItem, { lazy: true } )
-  // @Field(() => List)
+  @Field(() => List)
   list: List;
 
   @ManyToOne(() => Item, (item) => item.listItem, { lazy: true })
